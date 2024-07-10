@@ -36,11 +36,11 @@ importers:
         specifier: ^1.11.11
         version: 1.11.11
       deepsea-components:
-        specifier: ^5.5.2
-        version: 5.5.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.5.3
+        version: 5.5.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       deepsea-tools:
-        specifier: ^5.7.0
-        version: 5.7.0
+        specifier: ^5.7.1
+        version: 5.7.1
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -60,14 +60,17 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       soda-hooks:
-        specifier: ^5.3.1
-        version: 5.3.1(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^5.4.1
+        version: 5.4.1(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      soda-next:
+        specifier: ^0.0.4
+        version: 0.0.4(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       soda-nodejs:
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: ^0.0.4
+        version: 0.0.4
       soda-type:
-        specifier: ^5.1.0
-        version: 5.1.0(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: ^5.1.1
+        version: 5.1.1(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       stable-hash:
         specifier: ^0.0.4
         version: 0.0.4
@@ -703,16 +706,16 @@ packages:
       supports-color:
         optional: true
 
-  deepsea-components@5.5.2:
-    resolution: {integrity: sha512-4vEMOZxQTYNNimPNEsLSTkUIyyKrLQCjhQFFdw0q2jIsMzSyKN0o4eBI+v21C6ANrqVS04eChrfaqVa7hsF7rQ==}
+  deepsea-components@5.5.3:
+    resolution: {integrity: sha512-kUd+MrPgTDzsJ7ZBdaKiqmw1/EIb8RWYHdAJHe8RY7/OWSNw6yfuOZtQ3bivmpofOHb8CVZkCiGRYLiYYjw9iw==}
     peerDependencies:
       '@types/react': ^18.3.1
       '@types/react-dom': ^18.2.22
       react: ^18.3.1
       react-dom: ^18.2.0
 
-  deepsea-tools@5.7.0:
-    resolution: {integrity: sha512-nQP1HEwRMaT5EKo82wtdR10O/CmkeDMW3ZljuJLGZ4Qs5liI+vcWDkm/HSxWRBqTL/qCwJ61WWWuh18FsZCa6w==}
+  deepsea-tools@5.7.1:
+    resolution: {integrity: sha512-xTg0im3IF6bxRCtVHRdtK6U035o7Gr+zROYRY/2g/Hw3Nf+IJgWoz0klY3znZzNtod8FxClThrJGjyxYcoP6Nw==}
 
   define-data-property@1.1.4:
     resolution: {integrity: sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==}
@@ -1622,19 +1625,23 @@ packages:
   smooth-scrollbar@8.8.4:
     resolution: {integrity: sha512-Wn2Q/iE+PE1ef4EfhFMhgaIMfSrjJl2LalRu0hBWSrw5nZKGsUIjWFWHnLB/Lpx7N+a1pJH6+wkQzBr+5nWPUg==}
 
-  soda-hooks@5.3.1:
-    resolution: {integrity: sha512-veMP+ge/aVYDtzUAEfmSBok4gxFHUP0Sqx7SOPvpciGrzy5hqhz1WnbMoOJseyqngM+s9JoRUwIxs/AQSlEEyw==}
+  soda-hooks@5.4.1:
+    resolution: {integrity: sha512-3ZSY9nMScqVxEOVVDIscApWrd/dcjq0poHXeHEnNkrX0m+Nufojm0Ig8AySE8qREfBSEZfM2o8KN0878o6TnyQ==}
     peerDependencies:
       '@types/react': ^18.3.2
-      next: ^14
       react: ^18.3.1
       react-router-dom: ^6.24.0
 
-  soda-nodejs@0.0.1:
-    resolution: {integrity: sha512-81vF3WXUb6mzzxe/3SIiBXnbrw2FEEw8NvDQBGl6q/P8o6eRQaBbkw2bpVP3U3itaD4Z8e+5i/X/NydxwfB7fw==}
+  soda-next@0.0.4:
+    resolution: {integrity: sha512-oYsW6TpH9cC9KhId7qW6rSv1tcs0Q2zxV2ZfYB/FTLr4X66wh4YC0h+a/a9h7f/JtKZJHJ4QVW+nIXKTDN/eNg==}
+    peerDependencies:
+      next: '>=14'
 
-  soda-type@5.1.0:
-    resolution: {integrity: sha512-uneKy0wim/tv9I9b1QDBMqmCa0fJjUqSqDXayfHW6zgyB0mBZDD5eFKVHyy2gM3mBBqOCXD0MSvE8br7SpoLGg==}
+  soda-nodejs@0.0.4:
+    resolution: {integrity: sha512-nBiHN4QqUEQRJr2v0jbfDQfLdNt6x4ldeXVaX8zPVP3qZEwpJjhLG/HGdXtzpf7kkoj6a6CcgFRTuSbpbFXNfQ==}
+
+  soda-type@5.1.1:
+    resolution: {integrity: sha512-I/bIBQZNMj4gzAFD+z4bQjvkVy3AlsadX02l2Ma8Z4K0Y30fnBY+YjuUcQxUbB3cSgKNoxRbLVNHx4rknTxiiw==}
     peerDependencies:
       antd: ^5.18.2
       react: ^18.2.0
@@ -2541,13 +2548,13 @@ snapshots:
     dependencies:
       ms: 2.1.2
 
-  deepsea-components@5.5.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  deepsea-components@5.5.3(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@emotion/css': 11.11.2
       '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
       ahooks: 3.8.0(react@18.3.1)
-      deepsea-tools: 5.7.0
+      deepsea-tools: 5.7.1
       echarts: 5.5.1
       hls.js: 1.5.13
       react: 18.3.1
@@ -2557,7 +2564,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  deepsea-tools@5.7.0:
+  deepsea-tools@5.7.1:
     dependencies:
       clsx: 2.1.1
       fast-deep-equal: 3.1.3
@@ -3491,20 +3498,29 @@ snapshots:
       core-js: 3.37.1
       tslib: 1.14.1
 
-  soda-hooks@5.3.1(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  soda-hooks@5.4.1(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
     dependencies:
       '@types/react': 18.3.3
-      deepsea-tools: 5.7.0
-      next: 14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      deepsea-tools: 5.7.1
       react: 18.3.1
       react-router-dom: 6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      soda-type: 5.1.0(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      soda-type: 5.1.1(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
     transitivePeerDependencies:
       - antd
 
-  soda-nodejs@0.0.1: {}
+  soda-next@0.0.4(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+    dependencies:
+      next: 14.2.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      soda-hooks: 5.4.1(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+    transitivePeerDependencies:
+      - '@types/react'
+      - antd
+      - react
+      - react-router-dom
 
-  soda-type@5.1.0(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
+  soda-nodejs@0.0.4: {}
+
+  soda-type@5.1.1(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1):
     dependencies:
       antd: 5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
