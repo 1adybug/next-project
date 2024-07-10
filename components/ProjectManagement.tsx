@@ -16,7 +16,7 @@ import FormItem from "antd/es/form/FormItem"
 import { InputFile } from "deepsea-components"
 import { getEnumKey, getPostitiveIntParser, showTotal } from "deepsea-tools"
 import { FC, useRef, useState } from "react"
-import { useNextQueryState } from "soda-hooks"
+import { useQueryState } from "soda-next"
 import { Columns } from "soda-type"
 import colors from "tailwindcss/colors"
 import EnvEditor from "./EnvEditor"
@@ -24,7 +24,7 @@ import ReleaseManagement from "./ReleaseManagement"
 import Link from "next/link"
 
 const ProjectManagement: FC = () => {
-    const [query, setQuery] = useNextQueryState({
+    const [query, setQuery] = useQueryState({
         keys: [],
         parse: {
             pageNo: getPostitiveIntParser(1),
