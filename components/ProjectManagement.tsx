@@ -119,7 +119,7 @@ const ProjectManagement: FC = () => {
                                 }
                             }}
                         >
-                            <InputFile data-input-file className="hidden" accept=".zip,.7z" type="file" onChange={({ file }) => uploadProject(value, file)} />
+                            <InputFile data-input-file className="hidden" accept=".zip,.7z" type="file" onChange={({ file }) => uploadProject(value, file)} clearAfterChange />
                             <Button loading={uploadProjectLoading} type="primary" onClick={e => (e.currentTarget.parentElement?.querySelector("[data-input-file]") as HTMLInputElement)?.click()}>
                                 上传
                             </Button>
