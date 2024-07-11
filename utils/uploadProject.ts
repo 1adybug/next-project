@@ -1,4 +1,4 @@
-import { mkdir, rm } from "fs/promises"
+import { mkdir, readdir, rm } from "fs/promises"
 import { join } from "path"
 import { saveFile, unzip } from "soda-nodejs"
 import { getProject } from "./getProject"
@@ -25,6 +25,8 @@ export async function uploadProject(data: FormData) {
         await rm(folder, { recursive: true, force: true })
         throw new Error("解压失败")
     }
+    const dir = await readdir(folder)
+    if (dir.includes(".next")) await rm(join(folder, ".next"), { recursive: true, force: true })
     const project = await getProject(id)
     project.current = version
     await updateProject(project)
