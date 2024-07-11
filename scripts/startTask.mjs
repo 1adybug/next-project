@@ -27,7 +27,7 @@ function startStatic(current, port) {
  */
 async function startNext(current, port) {
     const dir = await readdir(join("../", "releases", current))
-    const file = dir.find(item => item.endsWith(".zip") || item.endsWith(".zip"))
+    const file = dir.find(item => item.endsWith(".zip") || item.endsWith(".7z"))
     const source = join("../", "releases", current, file || "")
     await rm(".next", { recursive: true, force: true })
     await unzip({
