@@ -1,10 +1,11 @@
 // @ts-check
 import dayjs from "dayjs"
 import express from "express"
-import { readdir, readFile } from "fs/promises"
+import { readdir, readFile, rm } from "fs/promises"
 import { createServer } from "http"
 import next from "next"
 import { join, resolve } from "path"
+import { unzip } from "soda-nodejs"
 
 /**
  * @param {string} current
@@ -25,7 +26,15 @@ function startStatic(current, port) {
  * @param {number} port
  */
 async function startNext(current, port) {
-    const app = next({ dir: join("../", "releases", current) })
+    const dir = await readdir(join("../", "releases", current))
+    const file = dir.find(item => item.endsWith(".zip") || item.endsWith(".zip"))
+    const source = join("../", "releases", current, file || "")
+    await rm(".next", { recursive: true, force: true })
+    await unzip({
+        source,
+        target: "./"
+    })
+    const app = next({})
     const handle = app.getRequestHandler()
     await app.prepare()
     createServer((request, response) => handle(request, response)).listen(port)

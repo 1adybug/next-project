@@ -55,7 +55,7 @@ const ProjectEditor: FC<ProjectEditorProps> = props => {
                 <FormItem<Project> name="port" label={<FormLabel width={28}>端口</FormLabel>} required>
                     <InputNumber className="!w-full" autoComplete="off" step={1} />
                 </FormItem>
-                <FormItem<Project> name="core" label={<FormLabel width={28}>核数</FormLabel>} required initialValue={1}>
+                <FormItem<Project> name="core" label={<FormLabel width={28}>核数</FormLabel>} required initialValue={2}>
                     <InputNumber className="!w-full" autoComplete="off" step={1} />
                 </FormItem>
                 <FormItem<Project>
