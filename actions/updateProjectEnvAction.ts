@@ -1,6 +1,6 @@
 "use server"
 
-import { getDataResponse } from "@utils/getDataResponse"
+import { getDataResponse } from "soda-next"
 import { Env } from "@utils/queryProject"
 import { updateProjectEnv } from "@utils/updateProjectEnv"
 

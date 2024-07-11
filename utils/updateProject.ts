@@ -1,3 +1,4 @@
+import { assign, equal } from "deepsea-tools"
 import { readdir } from "fs/promises"
 import { checkPort } from "get-port-please"
 import { Status } from "../constants"
@@ -24,7 +25,8 @@ export async function updateProject(data: UpdateProjectData) {
         }
     }
     const project = await getProject(id)
-    const newProject = { ...project, ...data }
+    const newProject = assign({}, project, data)
+    if (equal(project, newProject)) return newProject
     await writeConfig(id, newProject)
     if (project.status === Status.未启动) return
     await startTask(id)
