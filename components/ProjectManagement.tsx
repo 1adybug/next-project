@@ -15,13 +15,13 @@ import { useForm } from "antd/es/form/Form"
 import FormItem from "antd/es/form/FormItem"
 import { InputFile } from "deepsea-components"
 import { getEnumKey, getPostitiveIntParser, showTotal } from "deepsea-tools"
+import Link from "next/link"
 import { FC, useRef, useState } from "react"
 import { useQueryState } from "soda-next"
 import { Columns } from "soda-type"
 import colors from "tailwindcss/colors"
 import EnvEditor from "./EnvEditor"
 import ReleaseManagement from "./ReleaseManagement"
-import Link from "next/link"
 
 const ProjectManagement: FC = () => {
     const [query, setQuery] = useQueryState({
@@ -42,6 +42,8 @@ const ProjectManagement: FC = () => {
     const [openEditor, setOpenEditor] = useState(false)
     const [openEnvEditor, setOpenEnvEditor] = useState(false)
     const refreshReleaseRef = useRef<Record<string, (() => void) | null>>({})
+
+    const operationLoading = deleteProjectLoading || uploadProjectLoading || startTaskLoading || deleteTaskLoading
 
     const columns: Columns<ProjectWithStatus> = [
         {
@@ -112,48 +114,35 @@ const ProjectManagement: FC = () => {
             render(value, record, index) {
                 return (
                     <div className="flex justify-center gap-2">
-                        <ConfigProvider
-                            theme={{
-                                token: {
-                                    colorPrimary: colors.orange[500]
-                                }
-                            }}
-                        >
+                        <ConfigProvider theme={{ token: { colorPrimary: colors.orange[500] } }}>
                             <InputFile data-input-file className="hidden" accept=".zip,.7z" type="file" onChange={({ file }) => uploadProject(value, file)} clearAfterChange />
-                            <Button loading={uploadProjectLoading} type="primary" onClick={e => (e.currentTarget.parentElement?.querySelector("[data-input-file]") as HTMLInputElement)?.click()}>
+                            <Button loading={operationLoading} type="primary" onClick={e => (e.currentTarget.parentElement?.querySelector("[data-input-file]") as HTMLInputElement)?.click()}>
                                 上传
                             </Button>
                         </ConfigProvider>
-                        <Button type="primary" onClick={() => updateProject(value)}>
+
+                        <Button loading={operationLoading} type="primary" onClick={() => updateProject(value)}>
                             编辑
                         </Button>
-                        <ConfigProvider
-                            theme={{
-                                token: {
-                                    colorPrimary: colors.green[500]
-                                }
-                            }}
-                        >
-                            <Button loading={startTaskLoading} type="primary" onClick={() => startTask(value)}>
+
+                        <ConfigProvider theme={{ token: { colorPrimary: colors.green[500] } }}>
+                            <Button loading={operationLoading} type="primary" onClick={() => startTask(value)}>
                                 {record.status === Status.未启动 ? "启动" : "重启"}
                             </Button>
                         </ConfigProvider>
 
-                        <ConfigProvider
-                            theme={{
-                                token: {
-                                    colorPrimary: colors.red[700]
-                                }
-                            }}
-                        >
-                            <Button loading={deleteTaskLoading} disabled={record.status === Status.未启动} type="primary" onClick={() => deleteTask(value)}>
+                        <ConfigProvider theme={{ token: { colorPrimary: colors.red[700] } }}>
+                            <Button loading={operationLoading} disabled={record.status === Status.未启动} type="primary" onClick={() => deleteTask(value)}>
                                 停止
                             </Button>
                         </ConfigProvider>
 
-                        <Button onClick={() => updateProjectEnv(value)}>ENV</Button>
+                        <Button loading={operationLoading} onClick={() => updateProjectEnv(value)}>
+                            ENV
+                        </Button>
+
                         <Popconfirm title="确认删除" onConfirm={() => deleteProject(value)}>
-                            <Button type="primary" loading={deleteProjectLoading} danger>
+                            <Button type="primary" loading={operationLoading} danger>
                                 删除
                             </Button>
                         </Popconfirm>
