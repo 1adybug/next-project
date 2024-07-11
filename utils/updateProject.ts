@@ -1,7 +1,7 @@
 import { assign, equal } from "deepsea-tools"
 import { readdir } from "fs/promises"
 import { checkPort } from "get-port-please"
-import { Status } from "../constants"
+import { DIR, Status } from "../constants"
 import { getProject } from "./getProject"
 import { Project, queryProject } from "./queryProject"
 import { startTask } from "./startTask"
@@ -13,7 +13,7 @@ export type UpdateProjectData = Partial<Omit<Project, "id">> & {
 
 export async function updateProject(data: UpdateProjectData) {
     const { id, port } = data
-    const dir = await readdir("projects")
+    const dir = await readdir(DIR)
     if (!dir.includes(id)) throw new Error("项目不存在")
     if (port) {
         const projects = await queryProject({})

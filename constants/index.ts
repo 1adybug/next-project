@@ -10,3 +10,4 @@ export enum Status {
 }
 
 export const NAMESPACE = process.env.NEXT_PROJECT_NAMESPACE!
+export const DIR = process.env.NEXT_PROJECT_DIR!
