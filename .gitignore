@@ -49,3 +49,5 @@ test.ts
 projects/*
 
 .build.cache
+.rollup.cache
+build.zip

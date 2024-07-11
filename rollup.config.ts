@@ -3,7 +3,7 @@ import json from "@rollup/plugin-json"
 import resolve from "@rollup/plugin-node-resolve"
 import typescript from "@rollup/plugin-typescript"
 import { join } from "path"
-import { RollupOptions } from "rollup"
+import { type RollupOptions } from "rollup"
 
 const config: RollupOptions = {
     input: process.env.SCRIPTS!.split(","),
