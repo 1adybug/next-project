@@ -15,12 +15,12 @@ export async function uploadProject(data: FormData) {
     const target = join(folder, file.name.toLowerCase().replace(/^(.+?)(\.zip|\.7z)/, `${version}$2`))
     try {
         await saveFile({
-            file,
-            target
+            input: file,
+            output: target
         })
         await unzip({
-            source: target,
-            target: folder
+            input: target,
+            output: folder
         })
     } catch (error) {
         await rm(folder, { recursive: true, force: true })
