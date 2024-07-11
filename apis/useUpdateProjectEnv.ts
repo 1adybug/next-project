@@ -1,5 +1,5 @@
 import { updateProjectEnvAction } from "@actions/updateProjectEnvAction"
-import { getDataRequest } from "@utils/getDataRequest"
+import { getDataRequest } from "soda-next"
 import { onError } from "@utils/onError"
 import { Env } from "@utils/queryProject"
 import { useRequest } from "ahooks"

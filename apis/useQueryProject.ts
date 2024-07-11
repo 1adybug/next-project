@@ -1,5 +1,5 @@
 import { queryProjectAction } from "@actions/queryProjectAction"
-import { getDataRequest } from "@utils/getDataRequest"
+import { getDataRequest } from "soda-next"
 import { onError } from "@utils/onError"
 import { QueryProjectData } from "@utils/queryProject"
 import { useRequest } from "ahooks"

@@ -1,7 +1,7 @@
 import { useGetProject } from "@apis/useGetProject"
 import { useUpdateProject } from "@apis/useUpdateProject"
 import { EnvItem } from "@utils/getProjectEnv"
-import { nanoid } from "@utils/nanoid"
+import { nanoid } from "deepsea-tools"
 import { Button, Input, message, Modal } from "antd"
 import { FC } from "react"
 import { useInputState } from "soda-hooks"

@@ -1,5 +1,5 @@
 import { deleteTaskAction } from "@actions/deleteTaskAction"
-import { getDataRequest } from "@utils/getDataRequest"
+import { getDataRequest } from "soda-next"
 import { onError } from "@utils/onError"
 import { useRequest } from "ahooks"
 

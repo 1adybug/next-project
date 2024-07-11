@@ -1,5 +1,5 @@
 import { queryReleaseAction } from "@actions/queryReleaseAction"
-import { getDataRequest } from "@utils/getDataRequest"
+import { getDataRequest } from "soda-next"
 import { onError } from "@utils/onError"
 import { QueryReleaseData } from "@utils/queryReleases"
 import { useRequest } from "ahooks"
