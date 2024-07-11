@@ -38,9 +38,11 @@ async function main() {
             SCRIPTS: scripts.join(",")
         }
     })
+    const input = await readdir(cacheDir)
+    await rm("build.zip", { recursive: true, force: true })
     await zip({
-        source: cacheDir,
-        target: "build.zip",
+        input,
+        output: "build.zip",
         thread: "max",
         level: 0
     })
