@@ -66,8 +66,8 @@ importers:
         specifier: ^0.1.3
         version: 0.1.3(@types/react@18.3.3)(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-router-dom@6.24.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       soda-nodejs:
-        specifier: ^0.1.5
-        version: 0.1.5
+        specifier: ^0.1.6
+        version: 0.1.6
       soda-type:
         specifier: ^5.1.1
         version: 5.1.1(antd@5.19.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -1820,8 +1820,8 @@ packages:
     peerDependencies:
       next: '>=14'
 
-  soda-nodejs@0.1.5:
-    resolution: {integrity: sha512-f4V+vHp73U3J9Ih/zx2tznisRd+Gm/7dBd/P0ZQI/5oVUfwd05cCaagZ8hshFR2+CyCNqMrCb+DoERJSS+L/LQ==}
+  soda-nodejs@0.1.6:
+    resolution: {integrity: sha512-zCkXsuUFpLsKkG1x4e1U39ziqLPWlvdEzYpJgu2n7muzjKlAH5IFTvvydv5+8UjaP1K+NfcFEM5fJBntsM5G2Q==}
 
   soda-type@5.1.1:
     resolution: {integrity: sha512-I/bIBQZNMj4gzAFD+z4bQjvkVy3AlsadX02l2Ma8Z4K0Y30fnBY+YjuUcQxUbB3cSgKNoxRbLVNHx4rknTxiiw==}
@@ -3849,7 +3849,7 @@ snapshots:
       - react
       - react-router-dom
 
-  soda-nodejs@0.1.5:
+  soda-nodejs@0.1.6:
     dependencies:
       which: 4.0.0
 

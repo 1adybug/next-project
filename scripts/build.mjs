@@ -39,13 +39,15 @@ async function main() {
         }
     })
     const input = await readdir(cacheDir)
-    await rm("build.zip", { recursive: true, force: true })
+    await rm(join(cacheDir, "build.zip"), { recursive: true, force: true })
     await zip({
         input,
         output: "build.zip",
         thread: "max",
-        level: 0
+        level: 0,
+        cwd: cacheDir
     })
+    await rename(join(cacheDir, "build.zip"), "build.zip")
     await rm(cacheDir, { recursive: true, force: true })
 }
 
