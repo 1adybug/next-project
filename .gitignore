@@ -47,3 +47,5 @@ test.mjs
 test.ts
 
 projects/*
+
+.build.cache
