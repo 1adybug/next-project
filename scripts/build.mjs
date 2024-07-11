@@ -1,7 +1,7 @@
 // @ts-check
 import { copyFile, mkdir, readdir, rename, rm, writeFile } from "fs/promises"
 import { join } from "path"
-import { execAsync } from "soda-nodejs"
+import { execAsync, zip } from "soda-nodejs"
 
 const packageJson = {
     name: "next-project",
@@ -38,6 +38,13 @@ async function main() {
             SCRIPTS: scripts.join(",")
         }
     })
+    await zip({
+        source: cacheDir,
+        target: "build.zip",
+        thread: "max",
+        level: 0
+    })
+    await rm(cacheDir, { recursive: true, force: true })
 }
 
 main()
