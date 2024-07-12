@@ -1,5 +1,5 @@
 import { DIR, NAMESPACE, Status } from "@constants/index"
-import { getPagination } from "deepsea-tools"
+import { getPagination, Page } from "deepsea-tools"
 import { readdir, readFile } from "fs/promises"
 import { join } from "path"
 import { getTaskList } from "./getTaskList"
@@ -29,8 +29,14 @@ export async function queryProject({ pageNo, pageSize }: QueryProjectData) {
     const dir = await readdir(DIR)
     pageNo ??= 1
     pageSize ??= dir.length
-    const dir2 = dir.slice((pageNo - 1) * pageSize, pageNo * pageSize)
+    const data = getPagination({
+        data: dir,
+        pageNum: pageNo,
+        pageSize
+    })
+    const dir2 = data.list
     const projects: ProjectWithStatus[] = []
+    const result: Page<ProjectWithStatus> = { ...data, list: projects }
     const tasks = await getTaskList()
     for (const id of dir2) {
         const configPath = join(DIR, id, "config.json")
@@ -38,9 +44,5 @@ export async function queryProject({ pageNo, pageSize }: QueryProjectData) {
         const task = tasks.find(task => task.name === id && task.pm2_env.namespace === NAMESPACE)
         projects.push({ ...project, id, status: task ? (task.pm2_env.status as Status) : Status.未启动 })
     }
-    return getPagination({
-        data: projects,
-        pageNum: pageNo,
-        pageSize
-    })
+    return result
 }

@@ -248,7 +248,8 @@ const ProjectManagement: FC = () => {
                     showTotal,
                     onChange(pageNo, pageSize) {
                         setQuery(query => ({ ...query, pageNo, pageSize }))
-                    }
+                    },
+                    showSizeChanger: true
                 }}
             />
         </div>

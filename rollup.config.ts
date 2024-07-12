@@ -8,7 +8,7 @@ import { type RollupOptions } from "rollup"
 const config: RollupOptions = {
     input: process.env.SCRIPTS!.split(","),
     output: {
-        dir: join(process.env.CACHE_DIR!, "scripts"),
+        dir: join(process.env.CACHE_DIR ?? "./", "scripts"),
         format: "esm"
     },
     plugins: [typescript(), resolve(), commonjs(), json()],

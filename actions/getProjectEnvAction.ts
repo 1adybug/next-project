@@ -1,6 +1,6 @@
 "use server"
 
-import { getDataResponse } from "soda-next"
+import { getDataResponse } from "@utils/getDataResponse"
 import { getProjectEnv } from "@utils/getProjectEnv"
 
 export async function getProjectEnvAction(id: string) {
