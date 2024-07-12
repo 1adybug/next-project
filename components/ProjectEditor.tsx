@@ -1,15 +1,14 @@
 "use client"
 
-import { Project } from "@utils/queryProject"
 import { useAddProject } from "@apis/useAddProject"
 import { useGetProject } from "@apis/useGetProject"
 import { useUpdateProject } from "@apis/useUpdateProject"
+import { Project } from "@utils/queryProject"
 import { Form, Input, InputNumber, message, Modal } from "antd"
 import { useForm } from "antd/es/form/Form"
 import FormItem from "antd/es/form/FormItem"
 import TextArea from "antd/es/input/TextArea"
 import { FormLabel } from "deepsea-components"
-import { getPostitiveIntParser } from "deepsea-tools"
 import { FC, useEffect } from "react"
 
 export type ProjectEditorProps = {
@@ -24,7 +23,7 @@ const ProjectEditor: FC<ProjectEditorProps> = props => {
     const [form] = useForm<Project>()
     const { data, loading } = useGetProject(id, open)
     const { runAsync: addProjectAsync, loading: addProjectLoading } = useAddProject()
-    const { runAsync: updateProjectAsync, loading: updateProjectLoading, error } = useUpdateProject()
+    const { runAsync: updateProjectAsync, loading: updateProjectLoading } = useUpdateProject()
 
     async function submit(data: Project) {
         if (id) {
@@ -34,13 +33,13 @@ const ProjectEditor: FC<ProjectEditorProps> = props => {
             await addProjectAsync(data)
             message.success("新增成功")
         }
+        form.resetFields()
         onOpenChange?.(false)
         onSuccess?.()
     }
 
     useEffect(() => {
-        if (!open) return form.resetFields()
-        if (data) form.setFieldsValue(data)
+        if (open && data) form.setFieldsValue(data)
     }, [open, data])
 
     return (
@@ -55,7 +54,7 @@ const ProjectEditor: FC<ProjectEditorProps> = props => {
                 <FormItem<Project> name="port" label={<FormLabel width={28}>端口</FormLabel>} required>
                     <InputNumber className="!w-full" autoComplete="off" step={1} />
                 </FormItem>
-                <FormItem<Project> name="core" label={<FormLabel width={28}>核数</FormLabel>} required initialValue={2}>
+                <FormItem<Project> name="core" label={<FormLabel width={28}>核数</FormLabel>} required initialValue={1}>
                     <InputNumber className="!w-full" autoComplete="off" step={1} />
                 </FormItem>
                 <FormItem<Project>

@@ -1,7 +1,7 @@
-// @ts-check
 import { copyFile, mkdir, readdir, rename, rm, writeFile } from "fs/promises"
 import { join } from "path"
 import { execAsync, zip } from "soda-nodejs"
+import { buildScript } from "./buildScript"
 
 const packageJson = {
     name: "next-project",
@@ -29,17 +29,10 @@ async function main() {
     await execAsync("npm i", { cwd: cacheDir })
     await rm(join(cacheDir, "package-lock.json"), { recursive: true, force: true })
     await copyFile(".env", join(cacheDir, ".env"))
-    const dir = await readdir("scripts")
-    const scripts = dir.filter(item => item.endsWith(".ts")).map(item => join("scripts", item))
-    await execAsync("npx rollup -c rollup.config.ts --configPlugin @rollup/plugin-typescript", {
-        env: {
-            NODE_ENV: "production",
-            CACHE_DIR: cacheDir,
-            SCRIPTS: scripts.join(",")
-        }
-    })
+    await buildScript(join(cacheDir, "scripts"))
     const input = await readdir(cacheDir)
     await rm(join(cacheDir, "build.zip"), { recursive: true, force: true })
+    await rm(join("build.zip"), { recursive: true, force: true })
     await zip({
         input,
         output: "build.zip",

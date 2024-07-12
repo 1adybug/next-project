@@ -1,6 +1,6 @@
 "use server"
 
-import { getDataResponse } from "soda-next"
+import { getDataResponse } from "@utils/getDataResponse"
 import { updateProject, UpdateProjectData } from "@utils/updateProject"
 
 export async function updateProjectAction(data: UpdateProjectData) {

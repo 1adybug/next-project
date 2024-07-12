@@ -27,7 +27,12 @@ export async function uploadProject(data: FormData) {
         throw new Error("解压失败")
     }
     const dir = await readdir(folder)
-    if (dir.includes(".next")) await rm(join(folder, ".next"), { recursive: true, force: true })
+    if (dir.includes(".next")) {
+        const dir2 = await readdir(join(folder, ".next"))
+        for (const item of dir2) {
+            await rm(join(folder, ".next", item), { recursive: true, force: true })
+        }
+    }
     const project = await getProject(id)
     project.current = version
     await updateProject(project)

@@ -109,7 +109,8 @@ const ReleaseManagement: FC<ReleaseManagementProps> = props => {
                 onChange(page, pageSize) {
                     setPageNo(page)
                     setPageSize(pageSize)
-                }
+                },
+                showSizeChanger: true
             }}
         />
     )

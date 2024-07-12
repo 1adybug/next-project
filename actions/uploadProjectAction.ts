@@ -1,6 +1,6 @@
 "use server"
 
-import { getDataResponse } from "soda-next"
+import { getDataResponse } from "@utils/getDataResponse"
 import { uploadProject } from "@utils/uploadProject"
 
 export async function uploadProjectAction(data: FormData) {
