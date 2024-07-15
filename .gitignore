@@ -51,3 +51,4 @@ projects/*
 .build.cache
 .rollup.cache
 build.zip
+scripts
