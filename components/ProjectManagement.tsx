@@ -14,7 +14,7 @@ import { Button, ConfigProvider, Form, message, Popconfirm, Table } from "antd"
 import { useForm } from "antd/es/form/Form"
 import FormItem from "antd/es/form/FormItem"
 import { InputFile } from "deepsea-components"
-import { getEnumKey, getPostitiveIntParser, showTotal } from "deepsea-tools"
+import { getEnumKey, getPositiveIntParser, showTotal } from "deepsea-tools"
 import Link from "next/link"
 import { FC, useRef, useState } from "react"
 import { useQueryState } from "soda-next"
@@ -27,8 +27,8 @@ const ProjectManagement: FC = () => {
     const [query, setQuery] = useQueryState({
         keys: [],
         parse: {
-            pageNo: getPostitiveIntParser(1),
-            pageSize: getPostitiveIntParser(10)
+            pageNo: getPositiveIntParser(1),
+            pageSize: getPositiveIntParser(10)
         }
     })
     const { pageNo, pageSize } = query
