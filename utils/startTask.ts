@@ -27,6 +27,7 @@ export async function startTask(id: string) {
     await execAsync(`pm2 start ${start} --name ${id} --namespace ${NAMESPACE} -i ${core}`, {
         cwd,
         env: {
+            ...process.env,
             NODE_ENV: "production",
             PORT: port.toString(),
             NEXT_PROJECT_VERSION: current,

@@ -11,6 +11,7 @@ async function main() {
     } catch (error) {}
     await execAsync(`pm2 start ${join("scripts", "startNext.js")} --name ${NEXT_PROJECT_NAME} --namespace ${NEXT_PROJECT_NAMESPACE} -i ${NEXT_PROJECT_CORE}`, {
         env: {
+            ...process.env,
             NODE_ENV: "production",
             PORT
         }

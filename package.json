@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "tsx utils/buildDevelopment.ts && next dev --hostname 0.0.0.0 --port 5173",
         "build": "tsx utils/buildProduction.ts",
+        "build:release": "tsx utils/buildProduction.ts --release",
         "lint": "next lint"
     },
     "dependencies": {
@@ -42,6 +43,8 @@
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
         "autoprefixer": "^10.4.19",
+        "cross-env": "^7.0.3",
+        "get-port-please": "^3.1.2",
         "postcss": "^8.4.40",
         "prettier": "^3.3.3",
         "prettier-plugin-tailwindcss": "^0.6.5",
