@@ -6,7 +6,8 @@ import { getProject } from "./getProject"
 export enum ProjectType {
     "static" = "static",
     "next" = "next",
-    "script" = "script"
+    "script" = "script",
+    "remix" = "remix"
 }
 
 export async function getProjectType(id: string, current?: string): Promise<ProjectType> {
@@ -16,6 +17,7 @@ export async function getProjectType(id: string, current?: string): Promise<Proj
     if (dir.includes(".next")) return ProjectType.next
     if (dir.includes("dist")) {
         const dir2 = await readdir(join(DIR, id, "releases", current, "dist"))
+        if (dir2.includes("client") && dir2.includes("server")) return ProjectType.remix
         if (dir2.includes("index.html")) return ProjectType.static
         if (dir2.includes("index.js")) return ProjectType.script
         if (dir2.includes("index.mjs")) return ProjectType.script

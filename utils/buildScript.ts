@@ -15,7 +15,7 @@ export async function buildScript({ output = "scripts" }: BuildScriptOptions = {
     await mkdir(output, { recursive: true })
     const dependencies: Record<string, string> = JSON.parse(await readFile("build.config.json", "utf8")).dependencies
     const bundler = await rollup({
-        input: [join("utils", "start.ts"), join("utils", "startNext.ts"), join("utils", "startStatic.ts")],
+        input: [join("utils", "start.ts"), join("utils", "startNext.ts"), join("utils", "startRemix.ts"), join("utils", "startStatic.ts")],
         output: { dir: output, format: "cjs" },
         plugins: [typescript(), resolve(), commonjs(), json()],
         external: Object.keys(dependencies)

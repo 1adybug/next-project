@@ -14,15 +14,27 @@ export async function startTask(id: string) {
     const type = await getProjectType(id, current)
     const cwd = join(DIR, id, "main")
     let start = ""
-    if (type === ProjectType.next) {
-        await zipNext(id, current)
-        start = resolve("scripts", "startNext.js")
-    } else if (type === ProjectType.static) {
-        start = resolve("scripts", "startStatic.js")
-    } else if (type === ProjectType.script) {
-        const dir = await readdir(join(DIR, id, "releases", current, "dist"))
-        const script = dir.find(file => file.toLowerCase().endsWith(".js") || file.toLowerCase().endsWith(".mjs") || file.toLowerCase().endsWith(".cjs"))!
-        start = resolve(DIR, id, "releases", current, "dist", script)
+    switch (type) {
+        case ProjectType.next:
+            await zipNext(id, current)
+            start = resolve("scripts", "startNext.js")
+            break
+
+        case ProjectType.remix:
+            start = resolve("scripts", "startRemix.js")
+            break
+
+        case ProjectType.static:
+            start = resolve("scripts", "startStatic.js")
+            break
+
+        case ProjectType.script:
+            const dir = await readdir(join(DIR, id, "releases", current, "dist"))
+            const script = dir.find(file => file.toLowerCase().endsWith(".js") || file.toLowerCase().endsWith(".mjs") || file.toLowerCase().endsWith(".cjs"))!
+            start = resolve(DIR, id, "releases", current, "dist", script)
+
+        default:
+            throw new Error("未找到项目类型")
     }
     await execAsync(`pm2 start ${start} --name ${id} --namespace ${NAMESPACE} -i ${core}`, {
         cwd,
