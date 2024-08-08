@@ -13,37 +13,7 @@ async function main() {
     await execAsync("npx next build")
     await rename(".next", join(cacheDir, ".next"))
     const { name, version } = JSON.parse(await readFile("package.json", "utf8"))
-
-    let dependencies: Record<string, string> = {
-        next: "^14",
-        react: "^18",
-        "react-dom": "^18"
-    }
-
-    if (!release) {
-        try {
-            const addedDependencies = JSON.parse(await readFile("build.config.json", "utf8")).dependencies
-            dependencies = { ...dependencies, ...addedDependencies }
-        } catch (error) {}
-    } else {
-        dependencies = {
-            ...dependencies,
-            dotenv: "^16.4.5",
-            express: "^4.19.2",
-            "get-port-please": "^3.1.2",
-            "soda-nodejs": "^0.3.0"
-        }
-    }
-
-    dependencies = Object.entries(dependencies)
-        .sort(([a], [b]) => a.localeCompare(b))
-        .reduce(
-            (acc, [key, value]) => {
-                acc[key] = value
-                return acc
-            },
-            {} as Record<string, string>
-        )
+    const dependencies: Record<string, string> = JSON.parse(await readFile("build.config.json", "utf8")).dependencies
 
     const packageJson = {
         name,
@@ -62,7 +32,7 @@ async function main() {
     }
 
     await copyFile(".env", join(cacheDir, ".env"))
-    await buildScript({ output: join(cacheDir, "scripts"), release })
+    await buildScript({ output: join(cacheDir, "scripts") })
     const input = await readdir(cacheDir)
     await rm(join(cacheDir, "build.zip"), { recursive: true, force: true })
     await rm(join("build.zip"), { recursive: true, force: true })

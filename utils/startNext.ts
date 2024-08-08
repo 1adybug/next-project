@@ -10,17 +10,22 @@ config()
 
 async function main() {
     const PEM_PATH = process.env.PEM_PATH
-    const https = typeof PEM_PATH === "string"
-    const PORT = process.env.PORT ? Number(process.env.PORT) : https ? 443 : 80
+    const HTTPS = !!PEM_PATH
+    const PORT = process.env.PORT ? Number(process.env.PORT) : HTTPS ? 443 : 80
+    const HOSTNAME = process.env.HOSTNAME
     if (!checkPort(PORT)) throw new Error(`无效的端口号: ${PORT}`)
-    const app = next({ experimentalHttpsServer: https })
+    
+    const app = next({ experimentalHttpsServer: HTTPS })
     const handle = app.getRequestHandler()
     await app.prepare()
-    if (!https) return createHttpServer((request, response) => handle(request, response)).listen(PORT)
+
+    if (!HTTPS) return createHttpServer((request, response) => handle(request, response)).listen(PORT, HOSTNAME)
+
     const key = await readFile(join(PEM_PATH, "privkey.pem"), "utf8")
     const cert = await readFile(join(PEM_PATH, "cert.pem"), "utf8")
     const ca = await readFile(join(PEM_PATH, "chain.pem"), "utf8")
-    createHttpsServer({ key, cert, ca }, (request, response) => handle(request, response)).listen(PORT)
+
+    createHttpsServer({ key, cert, ca }, (request, response) => handle(request, response)).listen(PORT, HOSTNAME)
 }
 
 main()

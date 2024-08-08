@@ -11,7 +11,7 @@
     "dependencies": {
         "@ant-design/cssinjs": "^1.21.0",
         "@ant-design/icons": "^5.4.0",
-        "@ant-design/nextjs-registry": "^1.0.0",
+        "@ant-design/nextjs-registry": "^1.0.1",
         "@emotion/css": "^11.13.0",
         "ahooks": "^3.8.0",
         "antd": "^5.20.0",
@@ -28,7 +28,7 @@
         "react-dom": "^18.3.1",
         "soda-hooks": "^6.0.1",
         "soda-next": "^0.1.14",
-        "soda-nodejs": "^0.3.0",
+        "soda-nodejs": "^0.4.0",
         "soda-type": "^5.1.2",
         "stable-hash": "^0.0.4",
         "zod": "^3.23.8"
@@ -38,6 +38,7 @@
         "@rollup/plugin-json": "^6.1.0",
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-typescript": "^11.1.6",
+        "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
         "@types/node": "^20.14.14",
         "@types/react": "^18.3.3",
@@ -49,7 +50,7 @@
         "prettier": "^3.3.3",
         "prettier-plugin-tailwindcss": "^0.6.5",
         "rollup": "^4.20.0",
-        "tailwindcss": "^3.4.7",
+        "tailwindcss": "^3.4.8",
         "ts-node": "^10.9.2",
         "typescript": "^5.5.4"
     }

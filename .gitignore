@@ -52,5 +52,3 @@ projects/*
 .rollup.cache
 build.zip
 scripts
-
-build.config.json

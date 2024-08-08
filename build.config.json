@@ -1,0 +1,16 @@
+{
+    "dependencies": {
+        "@resvg/resvg-js": "^2",
+        "@types/cors": "^2",
+        "@types/express": "^4",
+        "@types/node": "^20",
+        "cors": "^2",
+        "dotenv": "^16",
+        "express": "^4",
+        "get-port-please": "^3",
+        "next": "^14",
+        "react": "^18",
+        "react-dom": "^18",
+        "soda-nodejs": "^0"
+    }
+}
