@@ -8,9 +8,9 @@ config()
 async function main() {
     const PEM_PATH = process.env.PEM_PATH
     const HTTPS = !!PEM_PATH
-    const { getRequestHandler, prepare } = next({ experimentalHttpsServer: HTTPS })
-    const handler = getRequestHandler()
-    await prepare()
+    const nextApp = next({ experimentalHttpsServer: HTTPS })
+    const handler = nextApp.getRequestHandler()
+    await nextApp.prepare()
 
     const app = express()
 
