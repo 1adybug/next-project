@@ -1,5 +1,4 @@
 import { config } from "dotenv"
-import express from "express"
 import next from "next"
 import { createServer } from "./createServer"
 
@@ -12,11 +11,9 @@ async function main() {
     const handler = nextApp.getRequestHandler()
     await nextApp.prepare()
 
-    const app = express()
+    const app = await createServer()
 
     app.all("*", (request, response) => handler(request, response))
-
-    createServer(app)
 }
 
 main()

@@ -12,15 +12,13 @@ async function main() {
 
     const root = join("../", "releases", process.env.NEXT_PROJECT_VERSION!, "dist")
 
-    const app = express()
+    const app = await createServer()
 
     app.use(`${BASE.replace(/\/+$/, "")}/`, express.static(root))
 
     app.get(`${BASE.replace(/\/+$/, "")}/*`, async (request, response) => response.sendFile(resolve(join(root, "index.html"))))
 
     if (BASE !== "/") app.get("/", async (request, response) => response.redirect(BASE))
-
-    createServer(app)
 }
 
 main()

@@ -13,15 +13,13 @@ async function main() {
         build: await import(`${join(dir, "server", "index.js")}`)
     })
 
-    const app = express()
+    const app = await createServer()
 
     app.use("/assets", express.static(join(dir, "client", "assets")))
 
     app.use(express.static(join(dir, "client")))
 
     app.all("*", remixHandler)
-
-    createServer(app)
 }
 
 main()
